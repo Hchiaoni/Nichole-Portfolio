@@ -12,9 +12,9 @@
       padding: 0;
     }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Times New Roman', serif;
       line-height: 1.6;
-      background: #f9f9fb;
+      background: #EFECCA;
       color: #333;
     }
     header {
@@ -23,9 +23,19 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid #6c63ff;
+      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+    }
     header h1 {
       font-size: 2.5rem;
       color: #2b2d42;
+      font-family: 'Times New Roman', serif;
     }
     header p {
       font-size: 1.2rem;
@@ -60,6 +70,32 @@
     .project h3 {
       color: #6c63ff;
     }
+    .project-photo {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .award {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .award h3 {
+      color: #6c63ff;
+    }
+    .award-photo {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
     footer {
       text-align: center;
       padding: 2rem;
@@ -70,81 +106,224 @@
       color: #6c63ff;
       text-decoration: none;
     }
+    .contact-form {
+      max-width: 500px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .contact-wrapper {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #2b2d42;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #6c63ff;
+    }
+    .submit-btn {
+      background: #6c63ff;
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover {
+      background: #5a52d5;
+    }
+    .alternative-contact {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e1e5e9;
+    }
   </style>
 </head>
 <body>
+  
   <header>
+    <img src="./IMG_profile_pic.png" alt="Nichole Huang" class="profile-photo">
     <h1>Nichole Huang</h1>
     <p>Creative Strategist | Content Specialist | Growth Enthusiast</p>
     <nav>
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#award">Award</a>
       <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#hire-me">Hire me</a>
     </nav>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I'm a creative problem solver with a background in theater arts and a passion for technology, people, and strategy. During my latest internship, I led content and hiring strategies that produced real business outcomes. I’m always curious and eager to make meaningful impact through communication, design, and insight.</p>
+    <p>I'm a creative problem solver who thrives at the intersection of technology, people, and storytelling. My approach combines analytical thinking with human-centered design - whether I'm crafting content strategies that drive engagement, writing scripts that bring organizational insights to life, or building tools that make learning more accessible.</p>
+    <p>I believe in continuous learning and hands-on experimentation. From mastering Python to create language-learning games, to collaborating with McKinsey consultants on digital transformation, I'm always pushing myself to grow and adapt in our rapidly evolving world.</p>
     <p>Languages: Chinese (Native), English (Fluent), French (A2), Dutch (Basic)</p>
     <p>Currently based in: Utrecht / Zeist, the Netherlands</p>
   </section>
 
   <section id="work">
-    <h2>Work & Projects</h2>
+    <h2>Work</h2>
 
     <div class="project">
       <h3>RecruitFirst – Marketing Headhunter Intern</h3>
       <p>Aug 2024 - Jan 2025</p>
+      <p><a href="https://www.instagram.com/recruit_allentien/" target="_blank">View Instagram Reels</a></p>
       <ul>
-        <li>77% success rate in recruitment for e-commerce client</li>
-        <li>Grew team lead’s Instagram to 1000+ followers organically</li>
-        <li>Created Reels with over 926K+ views without paid ads</li>
+        <li>Developed content strategy that grew Instagram following to 1000+</li>
+        <li>Demonstrates multimedia storytelling and audience engagement skills</li>
+        <li>Produced engaging reels that reached 1.17M+ total views, averaging 293K+ views per video without ads</li>
         <li>Tools: Canva, CapCut, Excel, AI tools</li>
       </ul>
     </div>
+      
+    <div class="project">
+      <h3>Digital Transformation Consulting</h3>
+      <p>Top-tier consultant firm Collaboration Project</p>
+      <ul>
+        <li>77% success rate in recruitment for e-commerce client</li>
+        <li>Collaborated with top-tier consultant on weekly strategic initiatives</li>
+        <li>Streamlined hiring processes using Excel automation and AI tools</li>
+        <li>Improved operational efficiency and reporting accuracy across teams</li>
+        <li>Bridged technical solutions with human-centered process improvements</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
 
     <div class="project">
-      <h3>Video Portfolio</h3>
-      <p><a href="https://www.youtube.com/watch?v=LsqLZi2Va3Q" target="_blank">Watch on YouTube</a></p>
-      <p><a href="https://www.instagram.com/recruit_allentien/" target="_blank">View Instagram Reels</a></p>
+      <h3>Dutch Language Learning Game</h3>
+      <p>Personal Project | Python Development</p>
+      <p><a href="https://codeinplace.stanford.edu/cip5/share/R3Qmqd2s6bfB4Fih1PvQ" target="_blank">Test Your Dutch Level👾</a></p>
+      <ul>
+        <li>Self-taught Python programming through Stanford's Code in Place</li>
+        <li>Designed and built interactive language learning tool for Dutch practice</li>
+        <li>Combines technical skills with cultural adaptation and learning methodology</li>
+        <li>Tools: Python, game logic design, user experience thinking</li>
+      </ul>
     </div>
 
     <div class="project">
-      <h3>Talent Consultant – Digital Transformation Project</h3>
+      <h3>Organization Dynamics Theatre Play</h3>
+      <p>Utrecht University Exchange Program</p>
       <ul>
-        <li>Collaborated with McKinsey consultant weekly</li>
-        <li>Streamlined hiring process using Excel and AI</li>
-        <li>Improved efficiency and reporting accuracy</li>
+        <li>Wrote and developed script exploring organizational behavior concepts</li>
+        <li>Translated complex academic theories into engaging narrative format</li>
+        <li>Demonstrated ability to analyze case-study and present insights creatively</li>
+        <li>Skills: Creative writing, academic research, storytelling, cultural adaptation</li>
       </ul>
+      <img src="./1744297340338.jpeg" alt="Organization Dynamics Theatre Cast" class="project-photo">
+    </div>
+  </section>
+
+  <section id="award">
+    <h2>Award</h2>
+    <div class="award">
+      <h3>"Wei" - Clinical Psychology Short Film | Honorable Mention</h3>
+      <p>Taiwan Association of Clinical Psychology | 2024</p>
+      <ul>
+        <li>Won Honorable Mention for short film "Wei" addressing depression themes</li>
+        <li>Served as script writer, producer, and actor in 2-person team</li>
+        <li>Completed entire production cycle in one month</li>
+        <li>Demonstrated multi-disciplinary skills in storytelling, project management, and performance</li>
+        <li>Skills: Creative writing, film production, acting, project management, healthcare communication</li>
+      </ul>
+      <img src="./IMG_3586.jpg" alt="Wei film production" class="award-photo">
     </div>
   </section>
 
   <section id="skills">
-    <h2>Skills & Certifications</h2>
-    <ul>
-      <li>Marketing Strategy</li>
-      <li>Content Creation & Video Editing</li>
-      <li>Data Analysis & Process Optimization</li>
-      <li>Recruitment & Communication</li>
-      <li>Python, Excel, Microsoft 365, Canva, CapCut</li>
-    </ul>
-    <p>
-      <a href="https://www.coursera.org/account/accomplishments/verify/6G0RL89LNB56" target="_blank">Coursera: Data, Data, Everywhere</a><br>
-      <a href="https://codeinplace.stanford.edu/cip5/certificate/zrpbqy" target="_blank">Stanford: Code in Place – Python</a>
-    </p>
+    <div class="project">
+      <h2>Skills</h2>
+      <ul>
+        <li>Marketing Strategy</li>
+        <li>Content Creation & Video Editing</li>
+        <li>Data Analysis & Process Optimization</li>
+        <li>Recruitment & Communication</li>
+        <li>Python, Excel, Microsoft 365, Canva, CapCut</li>
+      </ul>
+    </div>
+    
+    <div class="project">
+      <h2>Certifications</h2>
+      <p>
+        <a href="https://www.coursera.org/account/accomplishments/verify/6G0RL89LNB56" target="_blank">Google Data Analytics Certificate: Foundations - Data, Data, Everywhere (Coursera)</a><br>
+        <a href="https://codeinplace.stanford.edu/cip5/certificate/zrpbqy" target="_blank">Stanford: Code in Place – Python</a><br>
+        <a href="#" target="_blank">Rutgers University: Supply Chain Logistics (Coursera)</a>
+      </p>
+    </div>
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:chiaoni0803@gmail.com">chiaoni0803@gmail.com</a></p>
-    <p>Phone: +31 (0)65 704 28 21</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/nichole-huang-220408209/" target="_blank">Nichole Huang</a></p>
+  <section id="hire-me" class="contact">
+    <h2>Hire me</h2>
+    
+    <div class="contact-wrapper">
+      <p>Interested in working together? I'd love to hear about your project or opportunity!</p>
+      
+      <form action="https://formspree.io/f/xkgzobva" method="POST" class="contact-form">
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Company (Optional):</label>
+          <input type="text" id="company" name="company">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell me about your project or opportunity..." required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      
+      <div class="alternative-contact">
+        <p>Or connect with me directly:</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/nichole-huang-220408209/" target="_blank">Nichole Huang</a></p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Nichole Huang. All rights reserved.</p>
+    <p>© Developed and designed with ❤︎ by Nichole Huang.</p>
   </footer>
 </body>
 </html>
