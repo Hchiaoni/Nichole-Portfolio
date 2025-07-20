@@ -18,10 +18,23 @@
       color: #333;
     }
     header {
-      background: #fff;
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('./);
+      background-size: cover;
       padding: 2rem;
-      text-align: center;
+      text-align:center; 
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .tagline-overlay {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      background: rgba(108, 99, 255, 0.9);
+      color: white;
+      padding: 0.5rem 1rem; 
+      border-radius: 20px;
+      font-size: 0.9rem; 
+      font-weight: bold;
     }
     .profile-photo {
       width: 120px;
