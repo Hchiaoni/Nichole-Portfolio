@@ -4,171 +4,903 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nichole Huang | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    :root {
+      --primary-color: #ED6A5A;
+      --secondary-color: #5CA4A9;
+      --accent-color: #9BC1BC;
+      --warm-coral: #ED6A5A;
+      --cream-yellow: #F4F1BB;
+      --sage-green: #9BC1BC;
+      --deep-teal: #5CA4A9;
+      --soft-sage: #E6EBE0;
+      --text-dark: #2D3748;
+      --text-light: #4A5568;
+      --background: #E6EBE0;
+      --white: #ffffff;
+      --gradient-bg: linear-gradient(135deg, #ED6A5A 0%, #F4F1BB 25%, #9BC1BC 50%, #5CA4A9 75%, #E6EBE0 100%);
+      --gradient-accent: linear-gradient(135deg, #ED6A5A 0%, #F4F1BB 30%, #9BC1BC 60%, #5CA4A9 100%);
+      --warm-gradient: linear-gradient(135deg, #F4F1BB 0%, #E6EBE0 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(237, 106, 90, 0.08);
+      --shadow-md: 0 4px 6px -1px rgba(237, 106, 90, 0.15);
+      --shadow-lg: 0 10px 15px -3px rgba(237, 106, 90, 0.2);
+      --shadow-xl: 0 20px 25px -5px rgba(237, 106, 90, 0.25);
+    }
+
     body {
-      font-family: 'Times New Roman', serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      background: #EFECCA;
-      color: #333;
+      background: var(--background);
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
+
+    /* Animated background particles */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #E6EBE0 0%, #F4F1BB 50%, #E6EBE0 100%);
+    }
+
+    .bg-animation::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(155, 193, 188, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      top: 10%;
+      left: 10%;
+    }
+
+    .bg-animation::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(237, 106, 90, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite reverse;
+      bottom: 10%;
+      right: 10%;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+
+    /* Header with glassmorphism effect */
     header {
-      background: #fff; 
-      padding: 2rem; 
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(155, 193, 188, 0.3);
+      padding: 3rem 2rem;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05)
-     
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-accent);
+    }
+
+    header::after {
+      content: '🌸';
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
     .profile-photo {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1rem;
-      border: 4px solid #6c63ff;
-      box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+      margin-bottom: 1.5rem;
+      border: 4px solid transparent;
+      background: var(--gradient-accent);
+      padding: 4px;
+      box-shadow: var(--shadow-xl);
+      transition: all 0.3s ease;
+      position: relative;
     }
+
+    .profile-photo::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      padding: 4px;
+      background: var(--gradient-accent);
+      border-radius: 50%;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      animation: rotate 3s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
     header h1 {
-      font-size: 2.5rem;
-      color: #2b2d42;
-      font-family: 'Times New Roman', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
+      position: relative;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #555;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #6c63ff;
-      font-weight: bold;
-    }
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
+
+    header h1::after {
+      content: '👋';
+      position: absolute;
+      right: -50px;
+      top: 0;
       font-size: 2rem;
-      color: #2b2d42;
+      animation: wave 1.5s ease-in-out infinite;
+    }
+
+    .slogan {
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .slogan-text {
+      font-size: 1.4rem;
+      font-weight: 600;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 2px solid transparent;
+      border-radius: 25px;
+      background-image: var(--gradient-accent), linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+      background-origin: border-box;
+      background-clip: text, padding-box;
+      animation: slogan-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes slogan-glow {
+      0%, 100% { 
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      50% { 
+        transform: scale(1.02);
+        filter: brightness(1.1);
+      }
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      75% { transform: rotate(-10deg); }
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    header p.spiritual-quote {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--secondary-color);
+      margin-top: 0.5rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    nav a {
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(155, 193, 188, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--warm-gradient);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    nav a:hover {
+      color: var(--text-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+
+    nav a:hover::before {
+      left: 0;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::before {
+      content: attr(data-emoji);
+      margin-right: 0.5rem;
+      font-size: 2rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-accent);
+      border-radius: 2px;
+    }
+
+    /* Enhanced project cards with hover effects */
+    .project, .award {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(155, 193, 188, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before, .award::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient-accent);
+      transition: left 0.3s ease;
+    }
+
+    .project:hover, .award:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-color);
+    }
+
+    .project:hover::before, .award:hover::before {
+      left: 0;
+    }
+
+    .project h3, .award h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .project h3::before, .award h3::before {
+      content: '⭐';
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .project p:not(:last-child), .award p:not(:last-child) {
+      color: var(--text-light);
       margin-bottom: 1rem;
     }
-    .project {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+    .project ul, .award ul {
+      margin-top: 1rem;
+      padding-left: 0;
+      list-style: none;
     }
-    .project h3 {
-      color: #6c63ff;
+
+    .project li, .award li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
     }
-    .project-photo {
+
+    .project li::before, .award li::before {
+      content: '🙋🏻‍♀️';
+      position: absolute;
+      left: 0;
+      font-size: 0.9rem;
+    }
+
+    .project a, .award a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .project a::after, .award a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .project a:hover::after, .award a:hover::after {
+      width: 100%;
+    }
+
+    .project-photo, .award-photo {
       width: 100%;
       max-width: 600px;
       height: auto;
-      border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
     }
-    .award {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+    .project-photo:hover, .award-photo:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-xl);
     }
-    .award h3 {
-      color: #6c63ff;
-    }
-    .award-photo {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    .contact a {
-      color: #6c63ff;
-      text-decoration: none;
-    }
-    .contact-form {
-      max-width: 500px;
+
+    /* About section enhancement with spiritual and creative elements */
+    #about {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
       margin: 2rem auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border: 2px solid rgba(251, 191, 36, 0.2);
+      position: relative;
+      padding: 4rem 2rem;
     }
-    .contact-wrapper {
-      background: #fff;
-      border-radius: 12px;
+
+    #about::before {
+      content: '🌙';
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 2rem;
+      animation: gentleGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes gentleGlow {
+      0%, 100% { opacity: 0.6; transform: scale(1); filter: brightness(1); }
+      50% { opacity: 1; transform: scale(1.05); filter: brightness(1.2); }
+    }
+
+    .about-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .philosophy {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
       padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 2px solid rgba(251, 191, 36, 0.15);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+    }
+
+    .about-card.theater-tech::before {
+      background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    }
+
+    .about-card.curiosity-driven::before {
+      background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+    }
+
+    .about-card.human-centered::before {
+      background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .about-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .about-card p {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Enhanced skills section */
+    .skills-intro {
+      text-align: center;
       margin-bottom: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
+
+    .skills-intro p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--warm-pink);
+      background: rgba(251, 191, 36, 0.08);
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      display: inline-block;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 2px solid rgba(251, 191, 36, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skill-category h4 {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-category li {
+      color: var(--text-dark);
+      padding: 0.3rem 0;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .skill-category li::before {
+      content: '✨';
+      position: absolute;
+      left: 0;
+      font-size: 0.8rem;
+    }size: 1.5rem;
+    }
+
+    /* Contact form enhancements */
+    .contact-wrapper {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-xl);
+      border: 2px solid rgba(155, 193, 188, 0.3);
+      position: relative;
+    }
+
+    .contact-wrapper::before {
+      content: '🌻';
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2rem;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .contact-form {
+      max-width: none;
+      margin: 2rem 0;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
+
     .form-group label {
       display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      color: #2b2d42;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
     }
+
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.75rem;
-      border: 2px solid #e1e5e9;
-      border-radius: 8px;
+      padding: 1rem;
+      border: 2px solid rgba(155, 193, 188, 0.4);
+      border-radius: 15px;
       font-family: inherit;
       font-size: 1rem;
-      transition: border-color 0.3s ease;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
     }
+
     .form-group input:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: #6c63ff;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(237, 106, 90, 0.15);
+      transform: translateY(-2px);
     }
+
     .submit-btn {
-      background: #6c63ff;
+      background: var(--gradient-accent);
       color: white;
-      padding: 0.75rem 2rem;
+      padding: 1rem 2.5rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
     }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+
     .submit-btn:hover {
-      background: #5a52d5;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
+
+    .submit-btn:hover::before {
+      left: 100%;
+    }
+
     .alternative-contact {
       text-align: center;
       margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e1e5e9;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .alternative-contact a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      background: rgba(99, 102, 241, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .alternative-contact a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(55, 65, 81, 0.95) 0%, rgba(75, 85, 99, 0.95) 100%);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '💝';
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+    }
+
+    .project-highlight {
+      background: linear-gradient(135deg, rgba(244, 241, 187, 0.3) 0%, rgba(155, 193, 188, 0.2) 100%);
+      border-left: 4px solid var(--primary-color);
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 15px 15px 0;
+      font-style: italic;
+    }
+
+    .project-highlight p {
+      margin: 0;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    .location-section {
+      margin-top: 2rem;
+    }
+
+    .location-text {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .location-text p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      background: rgba(244, 241, 187, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      display: inline-block;
+      border: 2px solid rgba(155, 193, 188, 0.4);
+    }
+
+    .map-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      background: white;
+      padding: 10px;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+
+    .map-container iframe {
+      border-radius: 15px;
+      filter: contrast(1.1) saturate(1.2);
+      transition: all 0.3s ease;
+    }
+
+    .map-container:hover iframe {
+      filter: contrast(1.2) saturate(1.3);
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .location-pin {
+      position: relative;
+      width: 30px;
+      height: 30px;
+    }
+
+    .pin-dot {
+      width: 30px;
+      height: 30px;
+      background: var(--gradient-accent);
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .pin-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background: rgba(237, 106, 90, 0.4);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      70% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      section {
+        padding: 2rem 1rem;
+      }
+      
+      .contact-wrapper {
+        padding: 2rem;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-accent);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-color);
+    }
+
+    /* Loading animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project, .award {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .project:nth-child(even), .award:nth-child(even) {
+      animation-delay: 0.2s;
     }
   </style>
 </head>
 <body>
+  <div class="bg-animation"></div>
   
   <header>
     <img src="./IMG_profile_pic.png" alt="Nichole Huang" class="profile-photo">
@@ -181,121 +913,199 @@
       <a href="#award">Award</a>
       <a href="#skills">Skills</a>
       <a href="#hire-me">Hire me</a>
-    </nav>
+    </nav>    
   </header>
-
+  
   <section id="about">
-    <h2>About Nichole</h2>
-    <p>I'm Nichole, also known as Chiao-Ni, from Taiwan. I'm a versatile problem solver who bridges creative thinking with business impact. My unique strength lies in building trust, thinking creatively, and leveraging technology to drive meaningful results - whether that's developing recruitment strategies that achieve 77% success rates, creating content that generates millions of views, or streamlining operations through data-driven insights.
+     <h2 data-emoji="🙋🏻‍♀️"><h2>About Nichole</h2>
+ <p>I'm Nichole, also known as Chiao-Ni, from Taiwan. I'm a versatile problem solver who bridges creative thinking with business impact. My unique strength lies in building trust, thinking creatively, and leveraging technology to drive meaningful results - whether that's developing recruitment strategies that achieve 77% success rates, creating content that generates millions of views, or streamlining operations through data-driven insights.
 What sets me apart is my ability to rapidly learn and adapt across different business functions.</p>
     <p>I thrive in collaborative environments where I can combine analytical thinking with people-oriented solutions. From self-learning Python to building practical tools, to working alongside top-tier consultants on transformation projects, I approach every challenge with curiosity and a focus on sustainable growth.
 I'm passionate about roles where I can leverage my cross-functional perspective to help organizations grow, whether through talent acquisition, strategic marketing, operational excellence, or general management. I believe the best business solutions come from understanding both the data and the people behind it.</p>
-    <p>📍Currently based in: Utrecht / Zeist, the Netherlands</p> 
+    <div class="location-section">
+      <div class="location-text">
+        <p>📍Currently based in: Utrecht / Zeist, the Netherlands</p>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39200.84327654891!2d5.2369!3d52.0907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c66f5350189c05%3A0x6019bdd9c912fdc5!2sUtrecht%2C%20Netherlands!5e0!3m2!1sen!2snl!4v1634567890123!5m2!1sen!2snl&zoom=12"
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="map-overlay">
+          <div class="location-pin">
+            <div class="pin-dot"></div>
+            <div class="pin-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="work">
-    <h2>Work</h2>
+   <h2 data-emoji="💼">Work</h2>
 
     <div class="project">
-      <h3>RecruitFirst – Marketing Headhunter Intern</h3>
+   <h3>🎭 RecruitFirst – Creative Marketing & Human Connection</h3>
       <p>Aug 2024 - Jan 2025</p>
-      <p><a href="https://www.instagram.com/recruit_allentien/" target="_blank">View Instagram Reels</a></p>
+      <p><a href="https://www.instagram.com/recruit_allentien/" target="_blank">View Instagram Reels ✨</a></p>
+      <div class="project-highlight">
+        <p><strong>Theater Director's Approach to Digital Marketing:</strong></p>
+      </div>
       <ul>
-        <li>Developed content strategy that grew Instagram following to 1000+</li>
-        <li>Demonstrates multimedia storytelling and audience engagement skills</li>
-        <li>Produced engaging reels that reached 1.17M+ total views, averaging 293K+ views per video without ads</li>
-        <li>Tools: Canva, CapCut, Excel, AI tools</li>
+        <li>Applied storytelling principles from theater to create authentic, engaging content that resonated with 1000+ followers</li>
+        <li>Used my natural curiosity about human behavior to understand audience psychology, leading to 1.17M+ organic views</li>
+        <li>Blended creative vision with data analytics - each reel averaged 293K+ views through intentional narrative design</li>
+        <li>Approached content creation with spiritual mindfulness: every piece designed to genuinely serve and connect</li>
+        <li>Tools: Canva, CapCut, Excel, AI tools + Theater directing principles</li>
       </ul>
     </div>
       
-    <div class="project">
-      <h3>Digital Transformation Consulting</h3>
+   <div class="project">
+      <h3>🤖 Digital Transformation with Human Heart</h3>
       <p>Top-tier consultant firm Collaboration Project</p>
+      <div class="project-highlight">
+        <p><strong>Where Analytical Rigor Meets Intuitive Understanding:</strong></p>
+      </div>
       <ul>
-        <li>77% success rate in recruitment for e-commerce client</li>
-        <li>Collaborated with top-tier consultant on weekly strategic initiatives</li>
-        <li>Streamlined hiring processes using Excel automation and AI tools</li>
-        <li>Improved operational efficiency and reporting accuracy across teams</li>
-        <li>Bridged technical solutions with human-centered process improvements</li>
+        <li>77% success rate in recruitment by combining data-driven processes with genuine human connection and intuition</li>
+        <li>Collaborated with top consultants while bringing a unique perspective: technology should elevate human potential</li>
+        <li>Created automated solutions with Excel and AI that saved time while preserving the personal touch in hiring</li>
+        <li>Approached each candidate interaction with sincere curiosity about their story and potential</li>
+        <li>Bridged the gap between technical efficiency and authentic relationship-building</li>
       </ul>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-
+    <h2 data-emoji="🎨">Projects</h2>
+    
     <div class="project">
-      <h3>Dutch Language Learning Game</h3>
+  <h3>🎮 Dutch Language Learning Game - Code with Purpose</h3>
       <p>Personal Project | Python Development</p>
-      <p><a href="https://codeinplace.stanford.edu/cip5/share/R3Qmqd2s6bfB4Fih1PvQ" target="_blank">Test Your Dutch Level👾</a></p>
+      <p><a href="https://codeinplace.stanford.edu/cip5/share/R3Qmqd2s6bfB4Fih1PvQ" target="_blank">Test Your Dutch Level 👾</a></p>
+      <div class="project-highlight">
+        <p><strong>When Curiosity Meets Cultural Adaptation:</strong></p>
+      </div>
       <ul>
-        <li>Self-taught Python programming through Stanford's Code in Place</li>
-        <li>Designed and built interactive language learning tool for Dutch practice</li>
-        <li>Combines technical skills with cultural adaptation and learning methodology</li>
-        <li>Tools: Python, game logic design, user experience thinking</li>
+        <li>Self-taught Python through Stanford's Code in Place with the same dedication I bring to learning theater scripts</li>
+        <li>Designed the game with empathy for fellow language learners - understanding the emotional journey of cultural adaptation</li>
+        <li>Applied storytelling principles to make learning feel like play, not work</li>
+        <li>Combined technical problem-solving with cultural sensitivity and human psychology</li>
+        <li>Tools: Python, game design thinking, cultural empathy, user experience intuition</li>
       </ul>
     </div>
 
     <div class="project">
-      <h3>Organization Dynamics Theatre Play</h3>
-      <p>Utrecht University Exchange Program</p>
+ <h3>🎭 Organization Dynamics Theatre - Academic Concepts Come Alive</h3>
+      <p>Utrecht University Exchange Program</p
+     <div class="project-highlight">
+<p><strong>Making Complex Ideas Accessible Through Performance:</strong></p>
+      </div>
       <ul>
-        <li>Wrote and developed script exploring organizational behavior concepts</li>
-        <li>Translated complex academic theories into engaging narrative format</li>
-        <li>Demonstrated ability to analyze case-study and present insights creatively</li>
-        <li>Skills: Creative writing, academic research, storytelling, cultural adaptation</li>
+        <li>Transformed dry organizational behavior theories into compelling human stories that audiences could feel and understand</li>
+        <li>Approached academic research with creative curiosity - asking "How do people really experience these concepts?"</li>
+        <li>Used theater as a bridge between analytical knowledge and emotional intelligence</li>
+        <li>Demonstrated that the best insights come from combining rigorous study with genuine human empathy</li>
+        <li>Skills: Creative writing, academic research, performance, cultural translation, empathetic communication</li>
       </ul>
       <img src="./1744297340338.jpeg" alt="Organization Dynamics Theatre Cast" class="project-photo">
     </div>
 
     <div class="project">
-      <h3> "The Bridge between Notes" Short Film </h3>
+    <h3>🎬 "The Bridge between Notes" - Harmonizing Vision and Logistics</h3>
       <p>Team Project | Film Producer </p>
-      <p><a href="https://drive.google.com/file/d/1fu9OtN7VIcmCRLN37GWAxkCCVPniBao5/view?usp=sharing" target="_blank">Watch it here🎞️</a></p>
+      <p><a href="https://drive.google.com/file/d/1fu9OtN7VIcmCRLN37GWAxkCCVPniBao5/view?usp=sharing" target="_blank">Watch it here 🎞️</a></p>
+      <div class="project-highlight">
+        <p><strong>Producer as Spiritual Guide and Strategic Orchestrator:</strong></p>
+      </div>
       <ul>
-        <li>Managed production budgets and tracked expenses across multiple departments, ensuring projects stayed within allocated budget parameters.</li>
-        <li>Coordinated logistics for cast, crew, and equipment, demonstrating strong organizational and procurement skills.</li>
-        <li> Coordinated complex schedules across multiple teams and locations, ensuring efficient resource allocation.</li>
-        <li>Tools: Budget Management, Schedule Coordination, Procurement Coordination</li>
+        <li>Managed budgets and logistics while maintaining the sacred creative space every artist needs to do their best work</li>
+        <li>Approached each team member with genuine curiosity about their creative process and individual needs</li>
+        <li>Balanced analytical project management with intuitive understanding of creative rhythms and energy</li>
+        <li>Coordinated complex schedules by listening deeply to what each department truly needed to succeed</li>
+        <li>Skills: Budget management, empathetic leadership, creative project coordination, team harmony facilitation</li>
         <img src="./IMG_4315.jpg" alt="The Bridge Between Notes" class="project-photo">
       </ul>
     </div>
   </section>
-
+  
   <section id="award">
-    <h2>Award</h2>
-    <div class="award">
-      <h3>"Wei" - Clinical Psychology Short Film | Honorable Mention</h3>
+ <h2 data-emoji="🏆">Award</h2>   
+  <div class="award">
+    <h3>🏆 "Wei" - Healing Through Storytelling | Honorable Mention</h3>
       <p>Taiwan Association of Clinical Psychology | 2024</p>
-      <p><a href="https://www.youtube.com/watch?v=LsqLZi2Va3Q" target="_blank">Short Film-"Wei"🍿</a></p>
+      <p><a href="https://www.youtube.com/watch?v=LsqLZi2Va3Q" target="_blank">Short Film-"Wei" 🍿</a></p>
+      <div class="project-highlight">
+        <p><strong>When Art Becomes Medicine for the Soul:</strong></p>
+      </div>
       <ul>
-        <li>Won Honorable Mention for short film "Wei" addressing depression themes</li>
-        <li>Served as script writer, producer, and actor in 2-person team</li>
-        <li>Completed entire production cycle in one month</li>
-        <li>Demonstrated multi-disciplinary skills in storytelling, project management, and performance</li>
-        <li>Skills: Creative writing, film production, acting, project management, healthcare communication</li>
+        <li>Created a film about depression that honored the complexity of mental health with deep sensitivity and authenticity</li>
+        <li>Served triple roles (writer, producer, actor) by approaching each with different aspects of my curiosity and empathy</li>
+        <li>Completed the entire cycle in one month through focused intention and spiritual dedication to the message</li>
+        <li>Demonstrated that technology and creativity, when guided by genuine care, can create profound healing connections</li>
+        <li>Recognition from clinical psychology professionals validated the bridge between artistic expression and psychological insight</li>
+        <li>Skills: Therapeutic storytelling, multi-role creative leadership, mental health advocacy, compassionate communication</li>
       </ul>
       <img src="./IMG_3586.jpg" alt="Wei film production" class="award-photo">
     </div>
   </section>
 
-  <section id="skills">
+    <section id="skills">
     <div class="project">
-      <h2>Skills</h2>
-      <ul>
-        <li>Marketing Strategy</li>
-        <li>Content Creation & Video Editing</li>
-        <li>Data Analysis & Process Optimization</li>
-        <li>Recruitment & Communication</li>
-        <li>Client & Stakeholders Management </li>
-        <li>Budget Management </li>
-        <li>Project Management </li>
-        <li>Python, Excel, Microsoft 365, Canva, CapCut</li>
-      </ul>
+      <h2 data-emoji="🌟">Core Abilities</h2>
+      <div class="skills-intro">
+        <p>Where intuition meets innovation, where creativity dances with code:</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>🎭 Creative Leadership</h4>
+          <ul>
+            <li>Storytelling & Narrative Design</li>
+            <li>Creative Direction & Vision</li>
+            <li>Content Creation & Video Editing</li>
+            <li>Performance & Presentation</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h4>🤖 Technology & Innovation</h4>
+          <ul>
+            <li>Python Programming & Game Development</li>
+            <li>Data Analysis & Process Optimization</li>
+            <li>AI Tools Integration</li>
+            <li>Microsoft 365, Excel Automation</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h4>🌙 Human Connection</h4>
+          <ul>
+            <li>Empathetic Communication</li>
+            <li>Cross-cultural Understanding</li>
+            <li>Team Harmony & Collaboration</li>
+            <li>Mindful Project Management</li>
+          </ul>
+        </div>
+        
+        <div class="skill-category">
+          <h4>🚀 Strategic Growth</h4>
+          <ul>
+            <li>Marketing Strategy & Analytics</li>
+            <li>Recruitment & Talent Development</li>
+            <li>Budget Management & Resource Optimization</li>
+            <li>Digital Transformation with Human Focus</li>
+          </ul>
+        </div>
+      </div>
     </div>
     
     <div class="project">
-      <h2>Certifications</h2>
+      <h2 data-emoji="📜">Certifications</h2>
       <p>
         <a href="https://www.coursera.org/account/accomplishments/verify/6G0RL89LNB56" target="_blank">Google Data Analytics Certificate: Foundations - Data, Data, Everywhere (Coursera)</a><br>
         <a href="https://codeinplace.stanford.edu/cip5/certificate/zrpbqy" target="_blank">Stanford: Code in Place – Python</a><br>
@@ -305,7 +1115,7 @@ I'm passionate about roles where I can leverage my cross-functional perspective 
   </section>
 
   <section id="hire-me" class="contact">
-    <h2>Let's Connect💬</h2>
+    <h2 data-emoji="💬">Let's Connect</h2>
     
     <div class="contact-wrapper">
       <p>Interested in working together? I'd love to hear about your project or opportunity!</p>
