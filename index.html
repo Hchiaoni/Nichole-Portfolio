@@ -81,16 +81,22 @@
       50% { transform: translateY(-20px) scale(1.05); }
     }
 
-    /* Header with glassmorphism effect */
+    /* Header with background photo */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(155, 193, 188, 0.3);
-      padding: 3rem 2rem;
+      background: linear-gradient(rgba(237, 237, 233, 0.8), rgba(245, 235, 224, 0.85)), 
+                  url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(227, 213, 202, 0.4);
+      padding: 4rem 2rem;
       text-align: center;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-xl);
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     header::before {
@@ -99,17 +105,24 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 5px;
-      background: var(--gradient-accent);
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(245, 235, 224, 0.3) 0%, rgba(227, 213, 202, 0.4) 100%);
+      z-index: 1;
     }
 
     header::after {
-      content: '🌸';
+      content: '🕯️';
       position: absolute;
-      top: 1rem;
+      top: 2rem;
       right: 2rem;
       font-size: 1.5rem;
       animation: twinkle 2s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes twinkle {
@@ -376,7 +389,7 @@
     }
 
     .project li::before, .award li::before {
-      content: '🙋🏻‍♀️';
+      content: '🌟';
       position: absolute;
       left: 0;
       font-size: 0.9rem;
